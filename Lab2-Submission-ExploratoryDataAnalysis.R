@@ -1,1 +1,1 @@
-Wesley is Ugly
+is Ugly
