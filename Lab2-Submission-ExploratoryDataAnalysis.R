@@ -1,1 +1,1 @@
-Jane is Ugly
+is Ugly
