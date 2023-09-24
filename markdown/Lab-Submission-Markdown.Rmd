@@ -1,7 +1,7 @@
 ---
 title: "Business Intelligence Lab Submission Markdown"
 author: "Team Marafiki"
-date: "24/09/2023"
+date: "23/09/2023"
 output:
   github_document: 
     toc: yes
@@ -77,23 +77,9 @@ knitr::opts_chunk$set(
 
 ------------------------------------------------------------------------
 
-**Note:** the following "*R Markdown*" options have been set as the defaults in this markdown:
+# Performance Dataset
 
-> output:\
-> \
-> github_document:\
-> toc: yes\
-> toc_depth: 4\
-> fig_width: 6\
-> fig_height: 4\
-> df_print: default\
-> \
-> editor_options:\
-> chunk_output_type: console
-
-# Loading the Student Performance Dataset
-
-The 20230412-20230719-BI1-BBIT4-1-StudentPerformanceDataset is then loaded. The dataset and its metadata are available here: <https://drive.google.com/drive/folders/1-BGEhfOwquXF6KKXwcvrx7WuZXuqmW9q?usp=sharing>
+The 20230412-20230719-BI1-BBIT4-1-StudentPerformanceDataset is then loaded.
 
 ```{r Load Dataset}
 student_performance_dataset <-
@@ -236,34 +222,332 @@ student_performance_dataset <-
 
 We then display the number of observations and number of variables. We have 101 observations and 100 variables to work with.
 
-```{r Your Fourth Code Chunk}
+```{r Display dimension}
 dim(student_performance_dataset)
 ```
 
-Next, we display the quartiles for each numeric variable[*... think of this process as **"storytelling using the data."** Tell us what is happening; tell us what you are discovering as you proceed with the markdown; walk us through your code step-by-step (a code walkthrough).*]{#highlight style="color: blue"}
+Next, we display the quartiles for each numeric variable
 
-```{r Your Fifth Code Chunk}
+```{r Display data summary}
 summary(student_performance_dataset)
 ```
 
-# \<You can Provide Another Appropriate Title Here if you wish\>
+# Measures of Frequency for Categorical Variables
 
-Describe the code chunk here:
+This code chunk is used to calculate the frequency and percentage distribution of the categorical variables in the dataset.
 
-```{r Your Sixth Code Chunk}
-# Fill this with R related code that will be executed when the R markdown file
+```{r Frequency}
+student_performance_freq <- student_performance_dataset$class_group
+cbind(frequency = table(student_performance_freq),
+      percentage = prop.table(table(student_performance_freq)) * 100)
+
+student_performance_freq <- student_performance_dataset$gender
+cbind(frequency = table(student_performance_freq),
+      percentage = prop.table(table(student_performance_freq)) * 100)
+
+student_performance_freq <- student_performance_dataset$regret_choosing_bi
+cbind(frequency = table(student_performance_freq),
+      percentage = prop.table(table(student_performance_freq)) * 100)
+
+student_performance_freq <- student_performance_dataset$drop_bi_now
+cbind(frequency = table(student_performance_freq),
+      percentage = prop.table(table(student_performance_freq)) * 100)
+
+student_performance_freq <- student_performance_dataset$motivator
+cbind(frequency = table(student_performance_freq),
+      percentage = prop.table(table(student_performance_freq)) * 100)
+
+student_performance_freq <- student_performance_dataset$read_content_before_lecture
+cbind(frequency = table(student_performance_freq),
+      percentage = prop.table(table(student_performance_freq)) * 100)
+
+student_performance_freq <- student_performance_dataset$anticipate_test_questions
+cbind(frequency = table(student_performance_freq),
+      percentage = prop.table(table(student_performance_freq)) * 100)
+
+student_performance_freq <- student_performance_dataset$answer_rhetorical_questions
+cbind(frequency = table(student_performance_freq),
+      percentage = prop.table(table(student_performance_freq)) * 100)
+
+student_performance_freq <- student_performance_dataset$find_terms_I_do_not_know
+cbind(frequency = table(student_performance_freq),
+      percentage = prop.table(table(student_performance_freq)) * 100)
+
+student_performance_freq <- student_performance_dataset$copy_new_terms_in_reading_notebook
+cbind(frequency = table(student_performance_freq),
+      percentage = prop.table(table(student_performance_freq)) * 100)
+
+student_performance_freq <- student_performance_dataset$take_quizzes_and_use_results
+cbind(frequency = table(student_performance_freq),
+      percentage = prop.table(table(student_performance_freq)) * 100)
+
+student_performance_freq <- student_performance_dataset$reorganise_course_outline
+cbind(frequency = table(student_performance_freq),
+      percentage = prop.table(table(student_performance_freq)) * 100)
+
+student_performance_freq <- student_performance_dataset$write_down_important_points
+cbind(frequency = table(student_performance_freq),
+      percentage = prop.table(table(student_performance_freq)) * 100)
+
+student_performance_freq <- student_performance_dataset$space_out_revision
+cbind(frequency = table(student_performance_freq),
+      percentage = prop.table(table(student_performance_freq)) * 100)
+
+student_performance_freq <- student_performance_dataset$studying_in_study_group
+cbind(frequency = table(student_performance_freq),
+      percentage = prop.table(table(student_performance_freq)) * 100)
+
+student_performance_freq <- student_performance_dataset$schedule_appointments
+cbind(frequency = table(student_performance_freq),
+      percentage = prop.table(table(student_performance_freq)) * 100)
+
+student_performance_freq <- student_performance_dataset$goal_oriented
+cbind(frequency = table(student_performance_freq),
+      percentage = prop.table(table(student_performance_freq)) * 100)
+
+student_performance_freq <- student_performance_dataset$spaced_repetition
+cbind(frequency = table(student_performance_freq),
+      percentage = prop.table(table(student_performance_freq)) * 100)
+
+student_performance_freq <- student_performance_dataset$testing_and_active_recall
+cbind(frequency = table(student_performance_freq),
+      percentage = prop.table(table(student_performance_freq)) * 100)
+
+student_performance_freq <- student_performance_dataset$interleaving
+cbind(frequency = table(student_performance_freq),
+      percentage = prop.table(table(student_performance_freq)) * 100)
+
+student_performance_freq <- student_performance_dataset$categorizing
+cbind(frequency = table(student_performance_freq),
+      percentage = prop.table(table(student_performance_freq)) * 100)
+
+student_performance_freq <- student_performance_dataset$retrospective_timetable
+cbind(frequency = table(student_performance_freq),
+      percentage = prop.table(table(student_performance_freq)) * 100)
+
+student_performance_freq <- student_performance_dataset$cornell_notes
+cbind(frequency = table(student_performance_freq),
+      percentage = prop.table(table(student_performance_freq)) * 100)
+
+student_performance_freq <- student_performance_dataset$sq3r
+cbind(frequency = table(student_performance_freq),
+      percentage = prop.table(table(student_performance_freq)) * 100)
+
+student_performance_freq <- student_performance_dataset$commute
+cbind(frequency = table(student_performance_freq),
+      percentage = prop.table(table(student_performance_freq)) * 100)
+
+student_performance_freq <- student_performance_dataset$study_time
+cbind(frequency = table(student_performance_freq),
+      percentage = prop.table(table(student_performance_freq)) * 100)
+
+student_performance_freq <- student_performance_dataset$repeats_since_Y1
+cbind(frequency = table(student_performance_freq),
+      percentage = prop.table(table(student_performance_freq)) * 100)
+
+student_performance_freq <- student_performance_dataset$paid_tuition
+cbind(frequency = table(student_performance_freq),
+      percentage = prop.table(table(student_performance_freq)) * 100)
+
+student_performance_freq <- student_performance_dataset$free_tuition
+cbind(frequency = table(student_performance_freq),
+      percentage = prop.table(table(student_performance_freq)) * 100)
+
+student_performance_freq <- student_performance_dataset$extra_curricular
+cbind(frequency = table(student_performance_freq),
+      percentage = prop.table(table(student_performance_freq)) * 100)
+
+student_performance_freq <- student_performance_dataset$sports_extra_curricular
+cbind(frequency = table(student_performance_freq),
+      percentage = prop.table(table(student_performance_freq)) * 100)
+
+student_performance_freq <- student_performance_dataset$exercise_per_week
+cbind(frequency = table(student_performance_freq),
+      percentage = prop.table(table(student_performance_freq)) * 100)
+
+student_performance_freq <- student_performance_dataset$meditate
+cbind(frequency = table(student_performance_freq),
+      percentage = prop.table(table(student_performance_freq)) * 100)
+
+student_performance_freq <- student_performance_dataset$pray
+cbind(frequency = table(student_performance_freq),
+      percentage = prop.table(table(student_performance_freq)) * 100)
+
+student_performance_freq <- student_performance_dataset$internet
+cbind(frequency = table(student_performance_freq),
+      percentage = prop.table(table(student_performance_freq)) * 100)
+
+student_performance_freq <- student_performance_dataset$laptop
+cbind(frequency = table(student_performance_freq),
+      percentage = prop.table(table(student_performance_freq)) * 100)
+
+student_performance_freq <- student_performance_dataset$family_relationships
+cbind(frequency = table(student_performance_freq),
+      percentage = prop.table(table(student_performance_freq)) * 100)
+
+student_performance_freq <- student_performance_dataset$romantic_relationships
+cbind(frequency = table(student_performance_freq),
+      percentage = prop.table(table(student_performance_freq)) * 100)
+
+student_performance_freq <- student_performance_dataset$spiritual_wellnes
+cbind(frequency = table(student_performance_freq),
+      percentage = prop.table(table(student_performance_freq)) * 100)
+
+student_performance_freq <- student_performance_dataset$financial_wellness
+cbind(frequency = table(student_performance_freq),
+      percentage = prop.table(table(student_performance_freq)) * 100)
+
+student_performance_freq <- student_performance_dataset$health
+cbind(frequency = table(student_performance_freq),
+      percentage = prop.table(table(student_performance_freq)) * 100)
+
+student_performance_freq <- student_performance_dataset$day_out
+cbind(frequency = table(student_performance_freq),
+      percentage = prop.table(table(student_performance_freq)) * 100)
+
+student_performance_freq <- student_performance_dataset$night_out
+cbind(frequency = table(student_performance_freq),
+      percentage = prop.table(table(student_performance_freq)) * 100)
+
+student_performance_freq <- student_performance_dataset$alcohol_or_narcotics
+cbind(frequency = table(student_performance_freq),
+      percentage = prop.table(table(student_performance_freq)) * 100)
+
+student_performance_freq <- student_performance_dataset$mentor
+cbind(frequency = table(student_performance_freq),
+      percentage = prop.table(table(student_performance_freq)) * 100)
+
+student_performance_freq <- student_performance_dataset$mentor_meetings
+cbind(frequency = table(student_performance_freq),
+      percentage = prop.table(table(student_performance_freq)) * 100)
+
+student_performance_freq <- student_performance_dataset$`A - 1. I am enjoying the subject`
+cbind(frequency = table(student_performance_freq),
+      percentage = prop.table(table(student_performance_freq)) * 100)
+
+student_performance_freq <- student_performance_dataset$`A - 2. Classes start and end on time`
+cbind(frequency = table(student_performance_freq),
+      percentage = prop.table(table(student_performance_freq)) * 100)
 ```
 
-## \<You Can Have a Sub-Title Here if you wish\>
+## Measures of Central Tendency(Calculating the Mode)
 
-```{r Your Seventh Code Chunk}
-# Fill this with other R related code that will be executed when the R markdown
+This code chunk displays code used to calculate the mode of variable in the dataset. A function was manually created to calculate the mode.
+
+```{r Mode}
+student_performance_class_group_mode <- names(table(student_performance_dataset$class_group))[
+  which(table(student_performance_dataset$class_group) == max(table(student_performance_dataset$class_group)))
+]
+print(student_performance_class_group_mode)
+
+student_performance_gender_mode <- names(table(student_performance_dataset$gender))[
+  which(table(student_performance_dataset$gender) == max(table(student_performance_dataset$gender)))
+]
+print(student_performance_gender_mode)
+
+student_performance_regret_choosing_bi_mode <- names(table(student_performance_dataset$regret_choosing_bi))[
+  which(table(student_performance_dataset$regret_choosing_bi) == max(table(student_performance_dataset$regret_choosing_bi)))
+]
+print(student_performance_regret_choosing_bi_mode)
+
+student_performance_drop_bi_now_mode <- names(table(student_performance_dataset$drop_bi_now))[
+  which(table(student_performance_dataset$drop_bi_now) == max(table(student_performance_dataset$drop_bi_now)))
+]
+print(student_performance_drop_bi_now_mode)
+
+student_performance_motivator_mode <- names(table(student_performance_dataset$motivator))[
+  which(table(student_performance_dataset$motivator) == max(table(student_performance_dataset$motivator)))
+]
+print(student_performance_motivator_mode)
+
+student_performance_read_content_before_lecture_mode <- names(table(student_performance_dataset$read_content_before_lecture))[
+  which(table(student_performance_dataset$read_content_before_lecture) == max(table(student_performance_dataset$read_content_before_lecture)))
+]
+print(student_performance_read_content_before_lecture_mode)
+
+student_performance_anticipate_test_questions_mode <- names(table(student_performance_dataset$anticipate_test_questions))[
+  which(table(student_performance_dataset$anticipate_test_questions) == max(table(student_performance_dataset$anticipate_test_questions)))
+]
+print(student_performance_anticipate_test_questions_mode)
+
+student_performance_find_terms_mode <- names(table(student_performance_dataset$find_terms_I_do_not_know))[
+  which(table(student_performance_dataset$find_terms_I_do_not_know) == max(table(student_performance_dataset$find_terms_I_do_not_know)))
+]
+print(student_performance_find_terms_mode)
+
+student_performance_copy_new_terms_mode <- names(table(student_performance_dataset$copy_new_terms_in_reading_notebook))[
+  which(table(student_performance_dataset$copy_new_terms_in_reading_notebook) == max(table(student_performance_dataset$copy_new_terms_in_reading_notebook)))
+]
+print(student_performance_copy_new_terms_mode)
+
+student_performance_take_quizzes_mode <- names(table(student_performance_dataset$take_quizzes_and_use_results))[
+  which(table(student_performance_dataset$take_quizzes_and_use_results) == max(table(student_performance_dataset$take_quizzes_and_use_results)))
+]
+print(student_performance_take_quizzes_mode)
+
+student_performance_reorganize_course_outline_mode <- names(table(student_performance_dataset$reorganise_course_outline))[
+  which(table(student_performance_dataset$reorganise_course_outline) == max(table(student_performance_dataset$reorganise_course_outline)))
+]
+print(student_performance_reorganize_course_outline_mode)
 ```
 
-## \<You Can Have Another Sub-Title Here if you wish\>
+## Standard Deviation of each variable
 
-```{r Your Eighth Code Chunk}
-# Fill this with other R related code that will be executed when the R markdown
+This code chunk was used to calculate the standard deviation of each variable. The variables are categorical making meaning we had to convert the values to numerical values. This was done after selecting the columns which we wanted to calculate the standard deviation.
+
+```{r Standard Deviation}
+selected_columns <- student_performance_dataset[, c(1:100)]
+selected_columns <- sapply(selected_columns, as.numeric)
+standard_deviations <- sapply(selected_columns, sd)
+print(standard_deviations)
 ```
 
-**etc.** as per the lab submission requirements. Be neat and communicate in a clear and logical manner.
+## Variance of each Variable
+
+This chunk displays code on how the variance was calculated using the above selected columns.
+
+```{r Variance}
+variance <- sapply(selected_columns, var)
+print(variance)
+
+```
+
+## Kurtosis of each variable
+
+This chunk displays how the kurtosis of each variable was calculated. Initially the moments library was installed then loaded to facilitate this. In the selected columns, the columns that have at least 4 non-missing values were filtered out before calculating the kurtosis.
+
+```{r Kurtosis}
+library(moments)
+
+if (!is.element("e1071", installed.packages()[, 1])) {
+  install.packages("e1071", dependencies = TRUE)
+}
+require("e1071")
+selected_columns_filtered <- selected_columns[sapply(selected_columns, function(col) sum(!is.na(col)) >= 4)]
+kurtosis <- sapply(selected_columns_filtered, kurtosis, type = 2)
+print(kurtosis)
+
+```
+
+## Skewness of each variable
+
+```{r Skewness}
+skewness <- sapply(selected_columns, skewness)
+print(skewness) 
+```
+
+## Covariance between variables
+
+```{r Covariance}
+student_performance_cov <- cov(selected_columns)
+View(student_performance_cov) 
+```
+
+## Correlation between variables
+
+```{r Correlation}
+student_performance_cor <- cor(selected_columns)
+View(student_performance_cor) 
+```
+
+## 
