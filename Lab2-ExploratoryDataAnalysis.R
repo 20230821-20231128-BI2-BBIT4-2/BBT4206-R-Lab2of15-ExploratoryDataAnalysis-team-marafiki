@@ -61,7 +61,7 @@ renv::init()
 
 # You can also clean up a project by removing unused packages using the
 # following command: renv::clean()
-# testing  
+  
 # After you have confirmed that your code works as expected, use
 # renv::snapshot() to record the packages and their
 # sources in the lockfile.
